@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? 💕</title>
+    <title>Zoya veux-tu être ma valentine? 💕</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
@@ -123,13 +123,17 @@
             font-weight: 600;
         }
 
-        .button-container {
+        .yes-button-container {
             display: flex;
-            gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .no-button-container {
             position: relative;
             min-height: 80px;
+            display: flex;
+            justify-content: center;
         }
 
         button {
@@ -275,7 +279,7 @@
     <div class="heart-bg" id="heartBg"></div>
     
     <div class="container">
-        <h1>Zoya habibte veux-tu être ma valentine? 💕</h1>
+        <h1>Zoya veux-tu être ma valentine? 💕</h1>
         
         <div class="question-card" id="questionCard">
             <div class="photo-frame">
@@ -283,18 +287,21 @@
             </div>
 
             <div class="question">
-                Yes?
+                Oui?
             </div>
 
-            <div class="button-container" id="buttonContainer">
-                <button id="yesBtn">Yes! 💖</button>
-                <button id="noBtn">No</button>
+            <div class="yes-button-container">
+                <button id="yesBtn">Oui! 💖</button>
+            </div>
+
+            <div class="no-button-container" id="noButtonContainer">
+                <button id="noBtn">Non t'es grison</button>
             </div>
         </div>
 
         <div class="reveal-container" id="revealContainer">
             <div class="reveal-message">
-                LETS GOOO ELLE A DIT OUI ! 🎉💕
+                LETS GOOOO! je t'attends 🎉💕
             </div>
             <div class="reveal-photo">
                 <img src="pic2.png" alt="Revealed picture" id="pic2">
@@ -307,7 +314,7 @@
         const noBtn = document.getElementById('noBtn');
         const questionCard = document.getElementById('questionCard');
         const revealContainer = document.getElementById('revealContainer');
-        const buttonContainer = document.getElementById('buttonContainer');
+        const noButtonContainer = document.getElementById('noButtonContainer');
 
         // Background floating hearts
         function createFloatingHeart() {
@@ -333,16 +340,16 @@
             e.preventDefault();
             noBtnClickCount++;
             
-            const container = buttonContainer.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
+            const container = noButtonContainer.getBoundingClientRect();
+            const noRect = noBtn.getBoundingClientRect();
             
-            let maxX = container.width - btnRect.width - 20;
-            let maxY = container.height - btnRect.height;
+            let maxX = container.width - noRect.width - 20;
+            let maxY = container.height - noRect.height;
             
-            // Expand container if needed
+            // Expand container if needed for more movement space
             if (noBtnClickCount > 3) {
-                buttonContainer.style.minHeight = '200px';
-                maxY = 200 - btnRect.height;
+                noButtonContainer.style.minHeight = '200px';
+                maxY = 200 - noRect.height;
             }
             
             let randomX = Math.random() * maxX;
